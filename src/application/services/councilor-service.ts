@@ -1,5 +1,5 @@
 import { NotFoundError } from "elysia";
-import { NewCouncilor, Councilor, CouncilorRepository } from "../../domain/repository/councilor-repository";
+import { Councilor, CouncilorRepository, NewCouncilor } from "../../domain/repository/councilor-repository";
 import { councilorRepository } from "../../infra/repository/councilor-repository";
 
 export function createCouncilorService(repository: CouncilorRepository) {
