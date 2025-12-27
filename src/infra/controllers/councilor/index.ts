@@ -27,16 +27,7 @@ export const CouncilorController = new Elysia({ prefix: "/councilor" })
     })
   })
   .put("/", async (ctx) => {
-    // Fetch existing to preserve createdAt/updatedAt and other fields
-    const incoming: { id: number; name?: string; partyId?: number } = ctx.body;
-    const existing = await councilorService.findById(incoming.id);
-
-    const merged = {
-      ...existing,
-      ...incoming,
-    };
-
-    const updated = await councilorService.update(merged as any);
+    const updated = await councilorService.update(ctx.body);
 
     return ctx.status(200, updated);
   }, {
@@ -44,6 +35,8 @@ export const CouncilorController = new Elysia({ prefix: "/councilor" })
       id: t.Number(),
       name: t.String(),
       partyId: t.Number(),
+      updatedAt: t.Date(),
+      createdAt: t.Date(),
     })
   })
   .delete("/:id", async (ctx) => {

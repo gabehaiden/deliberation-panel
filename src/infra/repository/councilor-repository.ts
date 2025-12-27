@@ -25,9 +25,12 @@ export function createCouncilorRepository(db: Database): CouncilorRepository {
       });
     },
     update: async (councilor: Councilor) => {
-      const [updated] = await db.update(councilors).set(councilor).where(
-        eq(councilors.id, councilor.id)
-      ).returning();
+      const [updated] = await db.insert(councilors).values(councilor).onConflictDoUpdate({
+        target: councilors.id,
+        set: {
+          ...councilor,
+        },
+      }).returning();
 
       return updated;
     },

@@ -8,6 +8,7 @@ import { PartyController } from "./infra/controllers/party";
 import { ProposalController } from "./infra/controllers/proposal";
 import { ProposalCategoryController } from "./infra/controllers/proposal-category";
 import { ProposalStatusController } from "./infra/controllers/proposal-status";
+import { ProposalStageController } from "./infra/controllers/proposal-stage";
 import { ProposalVoteController } from "./infra/controllers/proposal-vote";
 import { SessionController } from "./infra/controllers/session";
 import { SessionProposalController } from "./infra/controllers/session-proposal";
@@ -25,6 +26,7 @@ const app = new Elysia()
   .use(ProposalCategoryController)
   .use(ProposalController)
   .use(ProposalStatusController)
+  .use(ProposalStageController)
   .use(SessionProposalController)
   .use(ProposalVoteController)
   .use(SessionController)
