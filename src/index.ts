@@ -1,15 +1,19 @@
 import cors from "@elysiajs/cors";
 import jwt from "@elysiajs/jwt";
+import openapi from "@elysiajs/openapi";
 import { Elysia } from "elysia";
 import { CouncilorController } from "./infra/controllers/councilor";
 import { PartyController } from "./infra/controllers/party";
 import { ProposalController } from "./infra/controllers/proposal";
 import { ProposalCategoryController } from "./infra/controllers/proposal-category";
 import { ProposalStatusController } from "./infra/controllers/proposal-status";
+import { ProposalVoteController } from "./infra/controllers/proposal-vote";
 import { SessionController } from "./infra/controllers/session";
+import { SessionProposalController } from "./infra/controllers/session-proposal";
 import { SessionTypeController } from "./infra/controllers/session-type";
 
 const app = new Elysia()
+  .use(openapi())
   .use(cors({ origin: ['*'] }))
   .use(
     jwt({
@@ -20,6 +24,8 @@ const app = new Elysia()
   .use(ProposalCategoryController)
   .use(ProposalController)
   .use(ProposalStatusController)
+  .use(SessionProposalController)
+  .use(ProposalVoteController)
   .use(SessionController)
   .use(SessionTypeController)
   .use(CouncilorController)
