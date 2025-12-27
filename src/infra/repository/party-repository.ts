@@ -26,9 +26,12 @@ export function createPartyRepository(db: Database): PartyRepository {
       });
     },
     update: async (party: Party) => {
-      const [updatedParty] = await db.update(parties).set(party).where(
-        eq(parties.id, party.id)
-      ).returning();
+      const [updatedParty] = await db.insert(parties).values(party).onConflictDoUpdate({
+        target: parties.id,
+        set: {
+          ...party,
+        },
+      }).returning();
 
       return updatedParty;
     },

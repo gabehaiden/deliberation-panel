@@ -12,7 +12,13 @@ export function createProposalRepository(db: Database): ProposalRepository {
     findAll: () => db.query.proposals.findMany(),
     findById: (id: number) => db.query.proposals.findFirst({ where: { id: { eq: id } } }),
     update: async (proposal: Proposal) => {
-      const [updated] = await db.update(proposals).set(proposal).where(eq(proposals.id, proposal.id)).returning();
+      const [updated] = await db.insert(proposals).values(proposal).onConflictDoUpdate({
+        target: proposals.id,
+        set: {
+          ...proposal,
+        },
+      }).returning();
+
       return updated;
     },
     delete: async (id: number) => {

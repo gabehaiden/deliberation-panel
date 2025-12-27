@@ -12,7 +12,13 @@ export function createProposalStatusRepository(db: Database): ProposalStatusRepo
     findAll: () => db.query.proposalStatus.findMany(),
     findById: (id: number) => db.query.proposalStatus.findFirst({ where: { id: { eq: id } } }),
     update: async (type: ProposalStatus) => {
-      const [updated] = await db.update(proposalStatus).set(type).where(eq(proposalStatus.id, type.id)).returning();
+      const [updated] = await db.insert(proposalStatus).values(type).onConflictDoUpdate({
+        target: proposalStatus.id,
+        set: {
+          ...type,
+        },
+      }).returning();
+
       return updated;
     },
     delete: async (id: number) => {

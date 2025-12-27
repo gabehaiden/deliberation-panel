@@ -12,7 +12,13 @@ export function createProposalStageRepository(db: Database): ProposalStageReposi
     findAll: () => db.query.proprosalStages.findMany(),
     findById: (id: number) => db.query.proprosalStages.findFirst({ where: { id: { eq: id } } }),
     update: async (stage: ProposalStage) => {
-      const [updated] = await db.update(proprosalStages).set(stage).where(eq(proprosalStages.id, stage.id)).returning();
+      const [updated] = await db.insert(proprosalStages).values(stage).onConflictDoUpdate({
+        target: proprosalStages.id,
+        set: {
+          ...stage,
+        },
+      }).returning();
+
       return updated;
     },
     delete: async (id: number) => {

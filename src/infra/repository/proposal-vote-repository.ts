@@ -12,7 +12,13 @@ export function createProposalVoteRepository(db: Database): ProposalVoteReposito
     findAll: () => db.query.proposalVotes.findMany(),
     findById: (id: number) => db.query.proposalVotes.findFirst({ where: { id: { eq: id } } }),
     update: async (vote: ProposalVote) => {
-      const [updated] = await db.update(proposalVotes).set(vote).where(eq(proposalVotes.id, vote.id)).returning();
+      const [updated] = await db.insert(proposalVotes).values(vote).onConflictDoUpdate({
+        target: proposalVotes.id,
+        set: {
+          ...vote,
+        },
+      }).returning();
+
       return updated;
     },
     delete: async (id: number) => {

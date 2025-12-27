@@ -25,9 +25,12 @@ export function createCategoryRepository(db: Database): CategoryRepository {
       });
     },
     update: async (category: Category) => {
-      const [updatedCategory] = await db.update(categories).set(category).where(
-        eq(categories.id, category.id)
-      ).returning();
+      const [updatedCategory] = await db.insert(categories).values(category).onConflictDoUpdate({
+        target: categories.id,
+        set: {
+          ...category,
+        },
+      }).returning();
 
       return updatedCategory;
     },

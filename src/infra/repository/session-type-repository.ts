@@ -12,7 +12,13 @@ export function createSessionTypeRepository(db: Database): SessionTypeRepository
     findAll: () => db.query.sessionTypes.findMany(),
     findById: (id: number) => db.query.sessionTypes.findFirst({ where: { id: { eq: id } } }),
     update: async (type: SessionType) => {
-      const [updated] = await db.update(sessionTypes).set(type).where(eq(sessionTypes.id, type.id)).returning();
+      const [updated] = await db.insert(sessionTypes).values(type).onConflictDoUpdate({
+        target: sessionTypes.id,
+        set: {
+          ...type,
+        },
+      }).returning();
+
       return updated;
     },
     delete: async (id: number) => {

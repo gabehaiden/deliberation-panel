@@ -12,7 +12,13 @@ export function createCouncilorTermRepository(db: Database): CouncilorTermReposi
     findAll: () => db.query.councilorTerms.findMany(),
     findById: (id: number) => db.query.councilorTerms.findFirst({ where: { id: { eq: id } } }),
     update: async (term: CouncilorTerm) => {
-      const [updated] = await db.update(councilorTerms).set(term).where(eq(councilorTerms.id, term.id)).returning();
+      const [updated] = await db.insert(councilorTerms).values(term).onConflictDoUpdate({
+        target: councilorTerms.id,
+        set: {
+          ...term,
+        },
+      }).returning();
+
       return updated;
     },
     delete: async (id: number) => {

@@ -28,3 +28,29 @@ export const PartyController = new Elysia({ prefix: "/party" })
       id: t.Number(),
     })
   })
+  .put("/", async (ctx) => {
+    const incoming: { id: number; name?: string; acronym?: string; code?: string } = ctx.body;
+    const existing = await partyService.findById(incoming.id);
+
+    const merged = { ...existing, ...incoming } as any;
+
+    const updated = await partyService.update(merged);
+
+    return ctx.status(200, updated);
+  }, {
+    body: t.Object({
+      id: t.Number(),
+      name: t.String(),
+      acronym: t.String(),
+      code: t.String(),
+    })
+  })
+  .delete("/:id", async (ctx) => {
+    await partyService.delete(Number(ctx.params.id));
+
+    return ctx.status(204);
+  }, {
+    params: t.Object({
+      id: t.Number(),
+    })
+  })

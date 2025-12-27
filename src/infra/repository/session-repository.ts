@@ -12,7 +12,13 @@ export function createSessionRepository(db: Database): SessionRepository {
     findAll: () => db.query.sessions.findMany(),
     findById: (id: number) => db.query.sessions.findFirst({ where: { id: { eq: id } } }),
     update: async (session: Session) => {
-      const [updated] = await db.update(sessions).set(session).where(eq(sessions.id, session.id)).returning();
+      const [updated] = await db.insert(sessions).values(session).onConflictDoUpdate({
+        target: sessions.id,
+        set: {
+          ...session,
+        },
+      }).returning();
+
       return updated;
     },
     delete: async (id: number) => {
