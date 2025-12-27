@@ -8,6 +8,8 @@
     "migration:push": "bunx drizzle-kit push"
   },
   "dependencies": {
+    "@elysiajs/cors": "^1.4.0",
+    "@elysiajs/jwt": "^1.4.0",
     "drizzle-orm": "^1.0.0-beta.5-0a7601e",
     "elysia": "latest",
     "pg": "^8.16.3"

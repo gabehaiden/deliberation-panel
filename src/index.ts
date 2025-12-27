@@ -1,3 +1,5 @@
+import cors from "@elysiajs/cors";
+import jwt from "@elysiajs/jwt";
 import { Elysia } from "elysia";
 import { CouncilorController } from "./infra/controllers/councilor";
 import { PartyController } from "./infra/controllers/party";
@@ -8,6 +10,12 @@ import { SessionController } from "./infra/controllers/session";
 import { SessionTypeController } from "./infra/controllers/session-type";
 
 const app = new Elysia()
+  .use(cors({ origin: ['*'] }))
+  .use(
+    jwt({
+      secret: process.env.JWT_SECRET!
+    })
+  )
   .use(PartyController)
   .use(ProposalCategoryController)
   .use(ProposalController)
