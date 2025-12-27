@@ -3,6 +3,7 @@ import jwt from "@elysiajs/jwt";
 import openapi from "@elysiajs/openapi";
 import { Elysia } from "elysia";
 import { CouncilorController } from "./infra/controllers/councilor";
+import { CouncilorTermController } from "./infra/controllers/councilor-term";
 import { PartyController } from "./infra/controllers/party";
 import { ProposalController } from "./infra/controllers/proposal";
 import { ProposalCategoryController } from "./infra/controllers/proposal-category";
@@ -28,6 +29,7 @@ const app = new Elysia()
   .use(ProposalVoteController)
   .use(SessionController)
   .use(SessionTypeController)
+  .use(CouncilorTermController)
   .use(CouncilorController)
   .listen(3000);
 
