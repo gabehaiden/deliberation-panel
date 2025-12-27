@@ -2,8 +2,8 @@ import { defineRelations, sql } from "drizzle-orm";
 import * as p from "drizzle-orm/pg-core";
 
 const timestamps = {
-  updatedAt: p.timestamp().defaultNow().$onUpdate(() => sql`NOW()`),
-  createdAt: p.timestamp().defaultNow().notNull(),
+  updatedAt: p.timestamp().$onUpdate(() => sql`NOW()`),
+  createdAt: p.timestamp().default(sql`NOW()`),
 }
 
 export const categories = p.pgTable('categories', {
