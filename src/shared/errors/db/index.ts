@@ -27,7 +27,7 @@ export class UniqueException extends DatabaseException {
   }
 }
 
-export default function dbError(error: any) {
+export function dbError(error: any) {
   switch (error.code) {
     case SQL_ERRORS.FOREIGN_KEY:
       return new ForeignKeyException()

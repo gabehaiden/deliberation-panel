@@ -1,5 +1,6 @@
 import { eq } from "drizzle-orm";
 import { Category, CategoryRepository } from "../../domain/repository/category-repository";
+import { dbError } from "../../shared/errors";
 import db, { Database } from "../db";
 import { categories } from "../db/schema";
 
@@ -13,29 +14,45 @@ export function createCategoryRepository(db: Database): CategoryRepository {
 
         return category as Category;
       } catch (error) {
-        throw error;
+        throw dbError(error);
       }
     },
-    findAll: () => {
-      return db.query.categories.findMany();
+    findAll: async () => {
+      try {
+        return await db.query.categories.findMany();
+      } catch (error) {
+        throw dbError(error);
+      }
     },
-    findById: (id: number) => {
-      return db.query.categories.findFirst({
-        where: { id: { eq: id } },
-      });
+    findById: async (id: number) => {
+      try {
+        return await db.query.categories.findFirst({
+          where: { id: { eq: id } },
+        });
+      } catch (error) {
+        throw dbError(error);
+      }
     },
     update: async (category: Category) => {
-      const [updatedCategory] = await db.insert(categories).values(category).onConflictDoUpdate({
-        target: categories.id,
-        set: {
-          ...category,
-        },
-      }).returning();
+      try {
+        const [updatedCategory] = await db.insert(categories).values(category).onConflictDoUpdate({
+          target: categories.id,
+          set: {
+            ...category,
+          },
+        }).returning();
 
-      return updatedCategory;
+        return updatedCategory;
+      } catch (error) {
+        throw dbError(error);
+      }
     },
     delete: async (id: number) => {
-      await db.delete(categories).where(eq(categories.id, id));
+      try {
+        await db.delete(categories).where(eq(categories.id, id));
+      } catch (error) {
+        throw dbError(error);
+      }
     }
   }
 }
