@@ -1,0 +1,5 @@
+export const SQL_ERRORS = {
+  REQUIRED_FIELD: '23502',
+  FOREIGN_KEY: '23503',
+  UNIQUE_FIELD: '23505'
+} as const;

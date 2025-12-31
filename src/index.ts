@@ -13,7 +13,7 @@ import { ProposalVoteController } from "./infra/controllers/proposal-vote";
 import { SessionController } from "./infra/controllers/session";
 import { SessionProposalController } from "./infra/controllers/session-proposal";
 import { SessionTypeController } from "./infra/controllers/session-type";
-import { DatabaseException } from "./shared/errors/db/DatabaseException";
+import { DatabaseException } from "./shared/errors/db";
 
 const app = new Elysia()
   .onError(({ error, status }) => {
