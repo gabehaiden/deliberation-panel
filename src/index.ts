@@ -13,8 +13,15 @@ import { ProposalVoteController } from "./infra/controllers/proposal-vote";
 import { SessionController } from "./infra/controllers/session";
 import { SessionProposalController } from "./infra/controllers/session-proposal";
 import { SessionTypeController } from "./infra/controllers/session-type";
+import { DatabaseException } from "./shared/errors/db/DatabaseException";
 
 const app = new Elysia()
+  .onError(({ error, status }) => {
+    if (error instanceof DatabaseException) {
+      return status(error.status, error.message);
+    }
+    return status(500, "Internal Server Error");
+  })
   .use(openapi())
   .use(cors({ origin: ['*'] }))
   .use(

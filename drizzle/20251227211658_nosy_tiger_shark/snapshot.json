@@ -1,7 +1,7 @@
 {
   "version": "8",
   "dialect": "postgres",
-  "id": "bdcd68cb-7fef-4601-b28d-3747fe19cb8e",
+  "id": "529c1dde-ecc5-4c57-a3df-edd8f061b749",
   "prevIds": [
     "00000000-0000-0000-0000-000000000000"
   ],
@@ -14,6 +14,12 @@
       ],
       "name": "vote_enum",
       "entityType": "enums",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "account",
+      "entityType": "tables",
       "schema": "public"
     },
     {
@@ -83,6 +89,193 @@
       "schema": "public"
     },
     {
+      "isRlsEnabled": false,
+      "name": "user",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "user_session",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "verification",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "account_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "provider_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "access_token",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "refresh_token",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id_token",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "access_token_expires_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "refresh_token_expires_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "scope",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "password",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "account"
+    },
+    {
       "type": "serial",
       "typeSchema": null,
       "notNull": true,
@@ -129,7 +322,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "councilorId",
+      "name": "councilor_id",
       "entityType": "columns",
       "schema": "public",
       "table": "councilor_terms"
@@ -142,7 +335,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "termStart",
+      "name": "term_start",
       "entityType": "columns",
       "schema": "public",
       "table": "councilor_terms"
@@ -155,7 +348,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "termEnd",
+      "name": "term_end",
       "entityType": "columns",
       "schema": "public",
       "table": "councilor_terms"
@@ -163,12 +356,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": null,
       "generated": null,
       "identity": null,
-      "name": "createdAt",
+      "name": "updated_at",
       "entityType": "columns",
       "schema": "public",
       "table": "councilor_terms"
@@ -176,12 +369,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": "NOW()",
       "generated": null,
       "identity": null,
-      "name": "updatedAt",
+      "name": "created_at",
       "entityType": "columns",
       "schema": "public",
       "table": "councilor_terms"
@@ -220,7 +413,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "partyId",
+      "name": "party_id",
       "entityType": "columns",
       "schema": "public",
       "table": "councilors"
@@ -228,12 +421,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": null,
       "generated": null,
       "identity": null,
-      "name": "createdAt",
+      "name": "updated_at",
       "entityType": "columns",
       "schema": "public",
       "table": "councilors"
@@ -241,12 +434,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": "NOW()",
       "generated": null,
       "identity": null,
-      "name": "updatedAt",
+      "name": "created_at",
       "entityType": "columns",
       "schema": "public",
       "table": "councilors"
@@ -306,12 +499,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": null,
       "generated": null,
       "identity": null,
-      "name": "createdAt",
+      "name": "updated_at",
       "entityType": "columns",
       "schema": "public",
       "table": "parties"
@@ -319,12 +512,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": "NOW()",
       "generated": null,
       "identity": null,
-      "name": "updatedAt",
+      "name": "created_at",
       "entityType": "columns",
       "schema": "public",
       "table": "parties"
@@ -376,7 +569,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "sessionProposalId",
+      "name": "session_proposal_id",
       "entityType": "columns",
       "schema": "public",
       "table": "proposal_votes"
@@ -389,7 +582,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "councilorId",
+      "name": "councilor_id",
       "entityType": "columns",
       "schema": "public",
       "table": "proposal_votes"
@@ -423,12 +616,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": null,
       "generated": null,
       "identity": null,
-      "name": "createdAt",
+      "name": "updated_at",
       "entityType": "columns",
       "schema": "public",
       "table": "proposal_votes"
@@ -436,12 +629,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": "NOW()",
       "generated": null,
       "identity": null,
-      "name": "updatedAt",
+      "name": "created_at",
       "entityType": "columns",
       "schema": "public",
       "table": "proposal_votes"
@@ -493,7 +686,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "authorId",
+      "name": "author_id",
       "entityType": "columns",
       "schema": "public",
       "table": "proposals"
@@ -506,7 +699,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "statusId",
+      "name": "status_id",
       "entityType": "columns",
       "schema": "public",
       "table": "proposals"
@@ -519,7 +712,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "categoryId",
+      "name": "category_id",
       "entityType": "columns",
       "schema": "public",
       "table": "proposals"
@@ -540,12 +733,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": null,
       "generated": null,
       "identity": null,
-      "name": "createdAt",
+      "name": "updated_at",
       "entityType": "columns",
       "schema": "public",
       "table": "proposals"
@@ -553,12 +746,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": "NOW()",
       "generated": null,
       "identity": null,
-      "name": "updatedAt",
+      "name": "created_at",
       "entityType": "columns",
       "schema": "public",
       "table": "proposals"
@@ -610,7 +803,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "sessionId",
+      "name": "session_id",
       "entityType": "columns",
       "schema": "public",
       "table": "session_proposals"
@@ -623,7 +816,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "proposalId",
+      "name": "proposal_id",
       "entityType": "columns",
       "schema": "public",
       "table": "session_proposals"
@@ -636,7 +829,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "stageId",
+      "name": "stage_id",
       "entityType": "columns",
       "schema": "public",
       "table": "session_proposals"
@@ -670,12 +863,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": null,
       "generated": null,
       "identity": null,
-      "name": "createdAt",
+      "name": "updated_at",
       "entityType": "columns",
       "schema": "public",
       "table": "session_proposals"
@@ -683,12 +876,12 @@
     {
       "type": "timestamp",
       "typeSchema": null,
-      "notNull": true,
+      "notNull": false,
       "dimensions": 0,
-      "default": "now()",
+      "default": "NOW()",
       "generated": null,
       "identity": null,
-      "name": "updatedAt",
+      "name": "created_at",
       "entityType": "columns",
       "schema": "public",
       "table": "session_proposals"
@@ -740,7 +933,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "presidentId",
+      "name": "president_id",
       "entityType": "columns",
       "schema": "public",
       "table": "sessions"
@@ -753,7 +946,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "sessionType",
+      "name": "session_type",
       "entityType": "columns",
       "schema": "public",
       "table": "sessions"
@@ -779,7 +972,7 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "startedAt",
+      "name": "started_at",
       "entityType": "columns",
       "schema": "public",
       "table": "sessions"
@@ -792,10 +985,101 @@
       "default": null,
       "generated": null,
       "identity": null,
-      "name": "finishedAt",
+      "name": "finished_at",
       "entityType": "columns",
       "schema": "public",
       "table": "sessions"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sessions"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": "NOW()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "sessions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "name",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "email",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user"
+    },
+    {
+      "type": "boolean",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "false",
+      "generated": null,
+      "identity": null,
+      "name": "email_verified",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "image",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user"
     },
     {
       "type": "timestamp",
@@ -805,10 +1089,10 @@
       "default": "now()",
       "generated": null,
       "identity": null,
-      "name": "createdAt",
+      "name": "created_at",
       "entityType": "columns",
       "schema": "public",
-      "table": "sessions"
+      "table": "user"
     },
     {
       "type": "timestamp",
@@ -818,15 +1102,277 @@
       "default": "now()",
       "generated": null,
       "identity": null,
-      "name": "updatedAt",
+      "name": "updated_at",
       "entityType": "columns",
       "schema": "public",
-      "table": "sessions"
+      "table": "user"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user_session"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "expires_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user_session"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "token",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user_session"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user_session"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user_session"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "ip_address",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user_session"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": false,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_agent",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user_session"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "user_session"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "identifier",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "value",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "expires_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification"
+    },
+    {
+      "type": "timestamp",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "now()",
+      "generated": null,
+      "identity": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "verification"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "account_userId_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "session_userId_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "user_session"
+    },
+    {
+      "nameExplicit": true,
+      "columns": [
+        {
+          "value": "identifier",
+          "isExpression": false,
+          "asc": true,
+          "nullsFirst": false,
+          "opclass": null
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "with": "",
+      "method": "btree",
+      "concurrently": false,
+      "name": "verification_identifier_idx",
+      "entityType": "indexes",
+      "schema": "public",
+      "table": "verification"
     },
     {
       "nameExplicit": false,
       "columns": [
-        "councilorId"
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "user",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "account_user_id_user_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "account"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "councilor_id"
       ],
       "schemaTo": "public",
       "tableTo": "councilors",
@@ -835,7 +1381,7 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "councilor_terms_councilorId_councilors_id_fkey",
+      "name": "councilor_terms_councilor_id_councilors_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "councilor_terms"
@@ -843,7 +1389,7 @@
     {
       "nameExplicit": false,
       "columns": [
-        "partyId"
+        "party_id"
       ],
       "schemaTo": "public",
       "tableTo": "parties",
@@ -852,7 +1398,7 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "councilors_partyId_parties_id_fkey",
+      "name": "councilors_party_id_parties_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "councilors"
@@ -860,7 +1406,7 @@
     {
       "nameExplicit": false,
       "columns": [
-        "sessionProposalId"
+        "session_proposal_id"
       ],
       "schemaTo": "public",
       "tableTo": "session_proposals",
@@ -869,7 +1415,7 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "proposal_votes_sessionProposalId_session_proposals_id_fkey",
+      "name": "proposal_votes_session_proposal_id_session_proposals_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "proposal_votes"
@@ -877,7 +1423,7 @@
     {
       "nameExplicit": false,
       "columns": [
-        "councilorId"
+        "councilor_id"
       ],
       "schemaTo": "public",
       "tableTo": "councilors",
@@ -886,7 +1432,7 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "proposal_votes_councilorId_councilors_id_fkey",
+      "name": "proposal_votes_councilor_id_councilors_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "proposal_votes"
@@ -894,7 +1440,7 @@
     {
       "nameExplicit": false,
       "columns": [
-        "authorId"
+        "author_id"
       ],
       "schemaTo": "public",
       "tableTo": "councilors",
@@ -903,7 +1449,7 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "proposals_authorId_councilors_id_fkey",
+      "name": "proposals_author_id_councilors_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "proposals"
@@ -911,7 +1457,7 @@
     {
       "nameExplicit": false,
       "columns": [
-        "statusId"
+        "status_id"
       ],
       "schemaTo": "public",
       "tableTo": "proposal_status",
@@ -920,7 +1466,7 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "proposals_statusId_proposal_status_id_fkey",
+      "name": "proposals_status_id_proposal_status_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "proposals"
@@ -928,7 +1474,7 @@
     {
       "nameExplicit": false,
       "columns": [
-        "categoryId"
+        "category_id"
       ],
       "schemaTo": "public",
       "tableTo": "categories",
@@ -937,7 +1483,7 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "proposals_categoryId_categories_id_fkey",
+      "name": "proposals_category_id_categories_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "proposals"
@@ -945,7 +1491,7 @@
     {
       "nameExplicit": false,
       "columns": [
-        "sessionId"
+        "session_id"
       ],
       "schemaTo": "public",
       "tableTo": "sessions",
@@ -954,7 +1500,7 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "session_proposals_sessionId_sessions_id_fkey",
+      "name": "session_proposals_session_id_sessions_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "session_proposals"
@@ -962,7 +1508,7 @@
     {
       "nameExplicit": false,
       "columns": [
-        "proposalId"
+        "proposal_id"
       ],
       "schemaTo": "public",
       "tableTo": "proposals",
@@ -971,7 +1517,7 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "session_proposals_proposalId_proposals_id_fkey",
+      "name": "session_proposals_proposal_id_proposals_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "session_proposals"
@@ -979,7 +1525,7 @@
     {
       "nameExplicit": false,
       "columns": [
-        "stageId"
+        "stage_id"
       ],
       "schemaTo": "public",
       "tableTo": "proposal_stages",
@@ -988,7 +1534,7 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "session_proposals_stageId_proposal_stages_id_fkey",
+      "name": "session_proposals_stage_id_proposal_stages_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "session_proposals"
@@ -996,7 +1542,7 @@
     {
       "nameExplicit": false,
       "columns": [
-        "presidentId"
+        "president_id"
       ],
       "schemaTo": "public",
       "tableTo": "councilors",
@@ -1005,7 +1551,7 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "sessions_presidentId_councilors_id_fkey",
+      "name": "sessions_president_id_councilors_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "sessions"
@@ -1013,7 +1559,7 @@
     {
       "nameExplicit": false,
       "columns": [
-        "sessionType"
+        "session_type"
       ],
       "schemaTo": "public",
       "tableTo": "session_types",
@@ -1022,10 +1568,37 @@
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "NO ACTION",
-      "name": "sessions_sessionType_session_types_id_fkey",
+      "name": "sessions_session_type_session_types_id_fkey",
       "entityType": "fks",
       "schema": "public",
       "table": "sessions"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "user_id"
+      ],
+      "schemaTo": "public",
+      "tableTo": "user",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "name": "user_session_user_id_user_id_fkey",
+      "entityType": "fks",
+      "schema": "public",
+      "table": "user_session"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "account_pkey",
+      "schema": "public",
+      "table": "account",
+      "entityType": "pks"
     },
     {
       "columns": [
@@ -1136,6 +1709,58 @@
       "schema": "public",
       "table": "sessions",
       "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "user_pkey",
+      "schema": "public",
+      "table": "user",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "user_session_pkey",
+      "schema": "public",
+      "table": "user_session",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "verification_pkey",
+      "schema": "public",
+      "table": "verification",
+      "entityType": "pks"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "email"
+      ],
+      "nullsNotDistinct": false,
+      "name": "user_email_key",
+      "schema": "public",
+      "table": "user",
+      "entityType": "uniques"
+    },
+    {
+      "nameExplicit": false,
+      "columns": [
+        "token"
+      ],
+      "nullsNotDistinct": false,
+      "name": "user_session_token_key",
+      "schema": "public",
+      "table": "user_session",
+      "entityType": "uniques"
     }
   ],
   "renames": []
